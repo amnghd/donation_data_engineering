@@ -12,9 +12,11 @@ We need to calculate for each reception the following: the number of donation re
 ## Data
 
 The data can be found [here](https://classic.fec.gov/finance/disclosure/metadata/DataDictionaryContributionsbyIndividuals.shtml).
-
+It is acquired by Fedetal Election Commission. It provides data for election cylces from 1980 to present. We are interested in the Individual Contributions that "containts each contributions from an individual to a fedetal committee". The provided files are quite large (in order of millions of records and GB of size).
 
 ## Understanding the Code:
+
+In this section I am going to briefly discuss about the code structure, its variables, and functions.
 
 ### Structure of the code:
 

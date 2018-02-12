@@ -26,16 +26,16 @@ Such program containts an infinie loop that containts three basic parts:
 Such loop receives input, performs calculations, and write out output. In our case since our data has limited number of records, we do not require an infinite loop. 
 In our code, the infinite loop is written using a context manager:
 
-	``with open(input_data_path, "r") as f, open(output_path, "w") as o:``
+	~~~~with open(input_data_path, "r") as f, open(output_path, "w") as o:
 	
-		``for line in f:``
+		for line in f:~~~~
 
 2. Reading input:
 The first step inside the loop is reading the input from IO (in our case the text file). This is done in our program using:
 	
 	``line_list = (line.strip().split('|'))``
 	
-3. Writing output:
+4. Writing output:
 The final step is to write the resultan of the computations on the IO (in our case the repeat_donor.txt). This is done using:
 
 	``o.write("|".join(out)+'\n')``

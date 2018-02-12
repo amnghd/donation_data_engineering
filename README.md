@@ -19,6 +19,15 @@ It is acquired by Fedetal Election Commission. It provides data for election cyl
 In this section I am going to briefly discuss about the code structure, its variables, and functions.
 
 ### Structure of the code:
+The code is written similar to a real-time-control program.
+Such program containts three basic structure:
+
+1. infinite loop:
+Such loop receives input, performs calculations, and write out output.
+In our code, the infinite loop is written using a context manager:
+
+``with open(input_data_path, "r") as f, open(output_path, "w") as o:``
+
 
 ### Functions:
 

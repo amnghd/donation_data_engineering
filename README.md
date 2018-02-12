@@ -84,3 +84,15 @@ If it doesn't meet the requirements, that specific line is skipped and new input
 6. The ``TRANSACTION_AMT`` is numerical.
 
 ### Run Summary:
+Once running the program is finished, a breif summary of the results will be prompted. 
+This is an example of such a prompt.
+```css
+-------------------------------------
+RUN SUMMARY:
+
+Total number of records:   7
+Total number of skipped records:   1
+Percentage of healthy data:   85.7%
+Total run time:   0.0 seconds
+-------------------------------------
+```

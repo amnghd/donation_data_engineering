@@ -20,15 +20,21 @@ In this section I am going to briefly discuss about the code structure, its vari
 
 ### Structure of the code:
 The code is written similar to a real-time-control program.
-Such program containts three basic structures:
+Such program containts an infinie loop that containts three basic parts:
 
 1. Infinite loop:
 Such loop receives input, performs calculations, and write out output. In our case since our data has limited number of records, we do not require an infinite loop. 
 In our code, the infinite loop is written using a context manager:
 
-	``with open(input_data_path, "r") as f, open(output_path, "w") as o``
+	``with open(input_data_path, "r") as f, open(output_path, "w") as o:
+		for line in f:``
 
-2. Reading input
+2. Reading input:
+The first step inside the loop is reading the input from IO (in our case the text file). This is done in our program using:
+	````
+
+
+
 ### Functions:
 
 

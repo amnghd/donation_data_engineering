@@ -5,9 +5,7 @@ import time # to time the program
 import os # to get the
 start_time = time.time()
 
-# utility functions
-
-
+# utility function
 def is_number(s):  # checking if the input is numeric
     try:
         float(s)

@@ -26,8 +26,10 @@ Such program containts an infinie loop that containts three basic parts:
 Such loop receives input, performs calculations, and write out output. In our case since our data has limited number of records, we do not require an infinite loop. 
 In our code, the infinite loop is written using a context manager:
 
-	~~~~with open(input_data_path, "r") as f, open(output_path, "w") as o:
-		for line in f:~~~~
+	```
+	with open(input_data_path, "r") as f, open(output_path, "w") as o:
+		for line in f:
+	```
 
 2. Reading input:
 The first step inside the loop is reading the input from IO (in our case the text file). This is done in our program using:

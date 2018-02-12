@@ -56,8 +56,16 @@ One function is written in this code which is ``is_number(string)``.
 This function is used for identifying whether the input value is a number and is used in checking whether data is in proper shape.
 
 ### Variables:
+Several variables are declared in this code. More important ones are:
 
+1.``donor_id``: This is a unique identifier for the donors, combined from their name and zip_code.
+2.``reception_id`` : This is a unique identifier for each reception which includes recepient id, zipcode of donation, year of donation.
+3.``all_individuals``: This is a set variable. It containts unique repeat donors.
+4. ``repeat_recipient``: This is a set variable. It contains unique receptions.
+5. ``list_of_outputs``: This is a dictionary. Its keys are the receptions and its values is a list. This list will contain the strings to be output in a pipe-separated manner.
 
-### Loops:
-
-
+### Data Quality Check:
+The quality of the data is checked against the following conditions.
+If it doesn't meet the requirements, that specific line is skipped and new input will be investigated.
+1. The line of data consists of all of the columns (21 columns).
+### Run Summary:

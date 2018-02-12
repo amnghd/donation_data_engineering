@@ -58,11 +58,11 @@ This function is used for identifying whether the input value is a number and is
 ### Variables:
 Several variables are declared in this code. More important ones are:
 
-1.``donor_id``: This is a unique identifier for the donors, combined from their name and zip_code.
+1. ``donor_id``: This is a unique identifier for the donors, combined from their name and zip_code.
 
-2.``reception_id`` : This is a unique identifier for each reception which includes recepient id, zipcode of donation, year of donation.
+2. ``reception_id`` : This is a unique identifier for each reception which includes recepient id, zipcode of donation, year of donation.
 
-3.``all_individuals``: This is a set variable. It containts unique repeat donors.
+3. ``all_individuals``: This is a set variable. It containts unique repeat donors.
 
 4. ``repeat_recipient``: This is a set variable. It contains unique receptions.
 
@@ -72,4 +72,15 @@ Several variables are declared in this code. More important ones are:
 The quality of the data is checked against the following conditions.
 If it doesn't meet the requirements, that specific line is skipped and new input will be investigated.
 1. The line of data consists of all of the columns (21 columns).
+
+2. The ``OTHER_ID`` column is empty.
+
+3. ``ZIP_CODE`` is numeric and its length is equal or more than 5.
+
+4. The ``TRANSACTION_DT`` has the **mmddyyyy** format. 
+
+5. The ``CMTD_ID`` follows the propoer pattern, regex = ``"^C{1}\d{8}$"``. 
+
+6. The ``TRANSACTION_AMT`` is numerical.
+
 ### Run Summary:

@@ -6,10 +6,9 @@ import os # to get the
 start_time = time.time()
 
 # utility functions
-# checking if the data is numeric
 
 
-def is_number(s):
+def is_number(s):  # checking if the input is numeric
     try:
         float(s)
         return True
@@ -119,12 +118,15 @@ def do_it():
                     list_of_outputs[reception_id][5] += 1  # increases the number of transactions
                     m = math.ceil(percentile/100*len(list_of_outputs[reception_id][6]))-1  # calculates percentile index
                     list_of_outputs[reception_id][6].append(transaction_amt)  # add amount to the list of amounts
-                    transaction_list = sorted(list_of_outputs[reception_id][6])  # sorting to calculate the percetile
-                    list_of_outputs[reception_id][3] = transaction_list[m]
-                out = [str(int(x))if isinstance(x, float) else str(x) for x in list_of_outputs[reception_id][:-1] ]
-                o.write("|".join(out)+'\n')
-            all_individuals.update([donor_id])
+                    transaction_list = sorted(list_of_outputs[reception_id][6])  # sorting to select the percentile
+                    list_of_outputs[reception_id][3] = transaction_list[m]  # sets the percentile
+                # The following line drops out the last value of the list (the list of amount) and bring the data in
+                # the format acceptable for output (integers for amount and percentile, string for the rest)
+                out = [str(int(x))if isinstance(x, float) else str(x) for x in list_of_outputs[reception_id][:-1]]
+                o.write("|".join(out)+'\n')  # makes a pipe-separated line to output
+            all_individuals.update([donor_id])  # updates the set of donor ids
 
+        # makes a run summary for the output
         print("-" * 37)
         print("RUN SUMMARY:\n")
         print("Total number of records:   {}".format(ctr))
@@ -133,5 +135,7 @@ def do_it():
         end_time = time.time()
         print("Total run time:   {0:.1f} seconds".format(end_time - start_time))
         print("-" * 37)
+
+        
 do_it()
 

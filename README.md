@@ -34,12 +34,19 @@ In our code, the infinite loop is written using a context manager:
 2. Reading input:
 The first step inside the loop is reading the input from IO (in our case the text file). This is done in our program using:
 	
-	``line_list = (line.strip().split('|'))``
+	```css
+	line_list = (line.strip().split('|'))
+	```
+3. Performing calculation:
+This is the heart of a real-time code. All of the calculation is performed in this section.
+In our case, we need to produce the following contents in this step: calculating total amount donated for each contribution, calculating number of contributions, calculation percentile of the contribution.
 	
 4. Writing output:
 The final step is to write the resultan of the computations on the IO (in our case the repeat_donor.txt). This is done using:
 
-	``o.write("|".join(out)+'\n')``
+	```css
+	o.write("|".join(out)+'\n')
+	```
 
 
 ### Functions:

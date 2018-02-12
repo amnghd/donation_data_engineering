@@ -33,6 +33,8 @@ output_path = os.path.join(scriptpath, r'..\output\repeat_donors.txt')  # path t
 punctuation = "[\s.,]"  # for cleaning the name columns
 cmtid_pattern = "^C{1}\d{8}$"  # for recipient (CMTD_ID) matching
 date_pattern = "[0-1][0-9][0-3][0-9][0-9]{4}"  # for datatime matching
+
+# defining sets and dictionary to hold data inside the loop
 all_individuals = set()  # a set that contains all the unique repeat donors and will updated with new repeat donors
 repeat_recipient = set()  # a set that contains all the unique donation receptions = recipient/year/zip_code
 list_of_outputs = dict()  # its keys are the unique donation receptions and values are list to output to txt file
@@ -97,7 +99,9 @@ def do_it():
             transaction_amt = float(transaction_amt)  # case the transaction amount to float for calculation
             donor_id = name + zip_code  # generates a unique id for donors based on name and zip_code
             reception_id = cmte_id + zip_code + transaction_dt[4:]  # generates a unique id for each reception
+
             if donor_id in all_individuals:  # checks if a donor is repeated, if repeated to calculate output
+
                 if reception_id not in repeat_recipient:  # if such a reception has happened first time
                     #  If it is the first time a reception (recipient/zip_code/year) occurs, we generate a new key in
                     #  the list_of_outputs and update its values by variables derived from input, no calculation is
@@ -112,6 +116,7 @@ def do_it():
                     #  consequently calculate the running percentile.
                     list_of_outputs[reception_id] = [rcpt, zip, yr, pctl, ttl, n, all_dons]  # fill  the output list
                     repeat_recipient.update([reception_id])  # update the recipient list with this new reception
+
                 elif reception_id in repeat_recipient:  # Now, if this reception has been performed before, we will
                     #  calculate the running percentile, total amount, and number of transactions
                     list_of_outputs[reception_id][4] += transaction_amt  # adds the transaction amount to existing total
@@ -120,6 +125,7 @@ def do_it():
                     list_of_outputs[reception_id][6].append(transaction_amt)  # add amount to the list of amounts
                     transaction_list = sorted(list_of_outputs[reception_id][6])  # sorting to select the percentile
                     list_of_outputs[reception_id][3] = transaction_list[m]  # sets the percentile
+
                 # The following line drops out the last value of the list (the list of amount) and bring the data in
                 # the format acceptable for output (integers for amount and percentile, string for the rest)
                 out = [str(int(x))if isinstance(x, float) else str(x) for x in list_of_outputs[reception_id][:-1]]
@@ -138,4 +144,3 @@ def do_it():
 
         
 do_it()
-
